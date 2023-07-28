@@ -1,0 +1,32 @@
+# from flask import Blueprint, request
+# from init import db
+# from models.film import Film
+# from models.genre import Genre
+# from models.filmgenre import FilmGenre, filmgenre_schema, filmgenres_schema
+
+# filmgenre_bp = Blueprint('filmgenre', __name__, url_prefix='/filmgenres')
+
+# @filmgenre_bp.route('/<int:film_id>/<int:genre_id>', methods=['POST'])
+# def add_genre_to_film(film_id, genre_id):
+#     film = Film.query.get(film_id)
+#     genre = Genre.query.get(genre_id)
+#     if not film or not genre:
+#         return {"message": "Film or genre not found"}, 404
+#     filmgenre = FilmGenre(film_id=film.id, genre_id=genre.id)
+#     db.session.add(filmgenre)
+#     db.session.commit()
+#     return filmgenre_schema.dump(filmgenre), 201
+
+# @filmgenre_bp.route('/<int:film_id>', methods=['GET'])
+# def get_genres_for_film(film_id):
+#     filmgenres = FilmGenre.query.filter_by(film_id=film_id).all()
+#     return filmgenres_schema.dump(filmgenres)
+
+# @filmgenre_bp.route('/<int:film_id>/<int:genre_id>', methods=['DELETE'])
+# def remove_genre_from_film(film_id, genre_id):
+#     filmgenre = FilmGenre.query.filter_by(film_id=film_id, genre_id=genre_id).first()
+#     if not filmgenre:
+#         return {"message": "Film or genre not found"}, 404
+#     db.session.delete(filmgenre)
+#     db.session.commit()
+#     return {}, 204
