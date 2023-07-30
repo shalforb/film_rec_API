@@ -1,18 +1,16 @@
 from init import db, ma
 from marshmallow import fields
 
+# Define the Film model
 class Film(db.Model):
     __tablename__ = 'films'
 
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String, nullable=False)
-    year = db.Column(db.Integer, nullable=False)
-    director = db.Column(db.String, nullable=False)
+    # Define the fields, specifying data types and constraints
+    film_id = db.Column(db.Integer, primary_key=True)  # Primary key for the film
+    title = db.Column(db.String(200), unique=True, nullable=False)  # The title of the film, must be unique
+    director = db.Column(db.String(200), nullable=False)  # Director of the film
+    year = db.Column(db.Integer, nullable=False)  # Release year of the film
 
-    # film_genres = db.relationship('FilmGenre', back_populates = 'film', cascade='all, delete')
-    # ratings = db.relationship('Rating', back_populates = 'film', cascade='all, delete')
-
-# class FilmSchema(ma.SQLAlchemyAutoSchema):
-#     class Meta:
-#         model = Film
-#         load_instance = True
+    # Relationships to the Rating and FilmGenre models
+    ratings = db.relationship('Rating', backref='film', lazy=True)  # One to many relationship with Rating
+    film_genres = db.relationship('FilmGenre', backref='film', lazy=True)  # One to many relationship with FilmGenre

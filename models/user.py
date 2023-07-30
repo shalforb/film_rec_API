@@ -1,22 +1,16 @@
-# from init import db, ma
-# from marshmallow import fields
+from init import db, ma
+from marshmallow import fields
 
-# class User(db.Model):
-#     __tablename__ = 'users'
+# Define the User model
+class User(db.Model):
+    __tablename__ = 'users'
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String, nullable=False)
-#     email = db.Column(db.String, nullable=False, unique=True)
-#     password = db.Column(db.String, nullable=False)
-#     is_admin = db.Column(db.Boolean, default=False)
+    # Define the fields, specifying data types and constraints
+    user_id = db.Column(db.Integer, primary_key=True)  # Primary key for the user
+    username = db.Column(db.String(64), unique=True, nullable=False)  # The username, must be unique
+    password = db.Column(db.String(128), nullable=False)  # The user's password
+    email = db.Column(db.String(120), unique=True, nullable=False)  # The user's email, must be unique
+    is_admin = db.Column(db.Boolean, default=False)  # Boolean indicating whether the user is an admin or not, not an admin by default
 
-#     ratings = db.relationship('Rating', back_populates='user', cascade='all, delete')
-
-# class UserSchema(ma.SQLAlchemySchema):
-#     ratings = fields.List(fields.Nested('RatingSchema', exclude=['user']))
-
-#     class Meta:
-#         fields = ('id', 'name', 'email', 'password', 'is_admin', 'ratings')
-
-# user_schema = UserSchema(exclude=['password'])
-# users_schema = UserSchema(many=True, exclude=['password'])
+    # Relationship to the Rating model
+    ratings = db.relationship('Rating', backref='user', lazy=True)  # One to many relationship with Rating

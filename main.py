@@ -1,30 +1,32 @@
 from flask import Flask
-import os
 from init import db, ma, bcrypt, jwt
+import os
 from flask import Blueprint
-# from controllers.user_controller import user_bp
-# from controllers.film_controller import film_bp
-from controllers import cli_controller
-# from controllers.genre_controller import genre_bp
-# from controllers.filmgenre_controller import filmgenre_bp
 from flask import current_app
 
-
 def create_app():
+    # Initialize a new Flask application
     app = Flask(__name__)
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
-    app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY")
+    # Set the configuration parameters for the Flask application
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")  # Sets the database URL from the environment variable
+    app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY")  # Sets the JWT secret key from the environment variable
 
-    db.init_app(app)
-    ma.init_app(app)
-    bcrypt.init_app(app)
-    jwt.init_app(app)
-    cli_controller.init_app(app)
+    # Initialize packages with the Flask application instance
+    db.init_app(app)  # Initialize SQLAlchemy with this Flask application
+    ma.init_app(app)  # Initialize Marshmallow with this Flask application
+    bcrypt.init_app(app)  # Initialize Bcrypt with this Flask application
+    jwt.init_app(app)  # Initialize JWTManager with this Flask application
 
-    # app.register_blueprint(user_bp)
-    # app.register_blueprint(film_bp)
-    # app.register_blueprint(genre_bp)
-    # app.register_blueprint(filmgenre_bp)
+    # Import commands and initialize with app
+    import commands
+    commands.init_app(app)
 
+    # Import all registerable controllers from the controllers module
+    from controllers import registerable_controllers
+    # Loop over each controller, and register it as a Blueprint with the Flask application
+    for controller in registerable_controllers:
+        app.register_blueprint(controller)
+
+    # Finally, return the configured Flask application instance
     return app
