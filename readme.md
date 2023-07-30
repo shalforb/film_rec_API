@@ -1,8 +1,5 @@
 # **Film Rating API Web Server Documentation**
-## [GitHub Repo]
-## [ERD]
 
-<br>
 
 ## **Installation and Setup**
 
@@ -24,12 +21,12 @@ Connect to the database:
 \c film_rec_db;
 ```
 
-Create a user and set a passsword:
+Create a user and set a password:
 ```postgresql
 CREATE USER db_dev WITH PASSWORD '123456';
 ```
 
-Grant user priviliges:
+Grant user privileges:
 ```postgresql
 GRANT ALL PRIVILEGES ON DATABASE film_rec_db TO db_dev;
 ```
@@ -72,25 +69,25 @@ Search 127.0.0.1:8080/ in the browser or Postman/ Insomnia. Refer to *API Endpoi
 
 ### The App
 
-Currently in the development phase, this user-focused & innovative application aims to change the way film enthusiasts discover and enjoy movies. With a goal to make the process of finding new films engaging and personalized, the application's mission is to transform the often tedious task of movie discovery into a seamless, enjoyable experience.
+Currently in the development phase, this user-focused & innovative application aims to change the way film enthusiasts discover and enjoy movies. With a goal to make the process of finding new films engaging and personalised, the application's mission is to transform the often tedious task of movie discovery into a seamless, enjoyable experience.
 
 As it stands, the application currently functions as an API web server, facilitating user interaction with a vast film database. The users can explore, rate, and review films, as well as maintain their personal user profiles. The server-side logic allows for user authentication, rating films, and browsing through the expansive film library, which sets the stage for future plans.
 
-The core aspect of the application, a personalized film recommendation feature, is currently under development. This feature will incorporate user's film ratings, viewing history, and their unique interests to offer a curated selection of movies catered to their personal taste. This has the potential to significantly reduce the time users spend searching for new films to watch, enhancing user experience, and fostering a deeper engagement with the platform.
+The core aspect of the application, a personalised film recommendation feature, is currently under development. This feature will incorporate user's film ratings, viewing history, and their unique interests to offer a curated selection of movies catered to their personal taste. This has the potential to significantly reduce the time users spend searching for new films to watch, enhancing user experience, and fostering a deeper engagement with the platform.
 
 ### The Problem
-The problem this application aims to solve is the lack of personalized film recommendations for users. Many film databases exist, but very few of them offer recommendations that are tailored to a user's viewing history and interests. This lack of personalization can make finding new films to watch a daunting task given the vast number of options available. This is where the application will truly shine - by providing a personalized movie discovery experience that is as enjoyable as watching the films themselves.
+The problem this application aims to solve is the lack of personalised film recommendations for users. Many film databases exist, but very few of them offer recommendations that are tailored to a user's viewing history and interests. This lack of personalization can make finding new films to watch a daunting task given the vast number of options available. This is where the application will truly shine - by providing a personalised movie discovery experience that is as enjoyable as watching the films themselves.
 
-The problem this app is designed to solve is providing personalized film recommendations to users. While there are many film databases available, not all of them offer personalized recommendations based on a user's viewing history and interests. Finding new films to watch can be overwhelming given the vast number of options available. Providing personalized recommendations makes the process easier and more enjoyable for users, and can lead to them discovering films they might not have found on their own.
+The problem this app is designed to solve is providing personalised film recommendations to users. While there are many film databases available, not all of them offer personalised recommendations based on a user's viewing history and interests. Finding new films to watch can be overwhelming given the vast number of options available. Providing personalised recommendations makes the process easier and more enjoyable for users, and can lead to them discovering films they might not have found on their own.
 
-This problem significantly affects users who are avid film enthusiasts and constantly looking for new films to watch. Without personalized recommendations, they often end up wasting a significant amount of time scrolling through countless films, sometimes ending up with choices that don't align with their preferences. This process can be frustrating and may lead to a lack of interest in exploring new films over time.
+This problem significantly affects users who are avid film enthusiasts and constantly looking for new films to watch. Without personalised recommendations, they often end up wasting a significant amount of time scrolling through countless films, sometimes ending up with choices that don't align with their preferences. This process can be frustrating and may lead to a lack of interest in exploring new films over time.
 
 ### The Power of Personalization
-The importance of personalization can't be understated in today's world. Users are more likely to engage with platforms that provide personalized experiences. This is because these platforms not only offer convenience but also cater to individual tastes and preferences, which is crucial in an age where the consumption of media content is at an all-time high.
+The importance of personalization can't be understated in today's world. Users are more likely to engage with platforms that provide personalised experiences. This is because these platforms not only offer convenience but also cater to individual tastes and preferences, which is crucial in an age where the consumption of media content is at an all-time high.
 
-Existing film databases, while comprehensive, often fall short when it comes to providing a truly personalized experience. Some of them do offer a basic level of personalization but it's not up to par with the rapidly evolving tastes and preferences of users. Users end up having to resort to multiple platforms to get relevant film recommendations, creating a disjointed and inconvenient experience.
+Existing film databases, while comprehensive, often fall short when it comes to providing a truly personalised experience. Some of them do offer a basic level of personalization but it's not up to par with the rapidly evolving tastes and preferences of users. Users end up having to resort to multiple platforms to get relevant film recommendations, creating a disjointed and inconvenient experience.
 
-Hence, there is a clear need for a more sophisticated and user-focused film recommendation platform. By offering personalized film recommendations, this app aims to fill this gap, streamlining users' search for new films and enhancing their overall film discovery experience. This, in turn, will increase user engagement and satisfaction, while also promoting a diverse range of films that might otherwise get overlooked.
+Hence, there is a clear need for a more sophisticated and user-focused film recommendation platform. By offering personalised film recommendations, this app aims to fill this gap, streamlining users' search for new films and enhancing their overall film discovery experience. This, in turn, will increase user engagement and satisfaction, while also promoting a diverse range of films that might otherwise get overlooked.
 
 ## **R3: Database System Selection and Justification**
 
@@ -417,17 +414,17 @@ Two types of relationships are prominently featured in the ERD: **one-to-many** 
 
 Consider the one-to-many relationship between the User and Ratings models, a crucial aspect of the application. It ensures that an individual user can create multiple ratings, enhancing user interactivity within the application. However, each rating is uniquely associated with one user, maintaining the authenticity of the feedback provided. The foreign key, user_id, in the Ratings table facilitates this relationship. Similarly, there is a one-to-many relationship between the Film and Ratings models, a necessary function in a film review context. Each film can receive numerous ratings from users, but a single rating can only pertain to one film. The film_id in the Ratings table secures this association.
 
-The many-to-many relationship between the Film and Genre models is another vital feature of the application, permitting a single film to be categorized under multiple genres. This flexible association enriches the film categorization system within the application, enhancing user search and discovery. On the flip side, a single genre can encapsulate numerous films, ensuring a broad collection within each genre. The junction table, FilmGenre, resolves this many-to-many relationship by storing the film_id and genre_id, thereby recording each instance of a film's association with a genre.
+The many-to-many relationship between the Film and Genre models is another vital feature of the application, permitting a single film to be categorised under multiple genres. This flexible association enriches the film categorization system within the application, enhancing user search and discovery. On the flip side, a single genre can encapsulate numerous films, ensuring a broad collection within each genre. The junction table, FilmGenre, resolves this many-to-many relationship by storing the film_id and genre_id, thereby recording each instance of a film's association with a genre.
 
-In addition to serving as an illustrative guide, the ERD contributes to discerning data redundancies and optimizing the database structure. It assists in establishing the integrity constraints, such as primary and foreign keys, crucial for enhancing data consistency and preventing anomalies.
+In addition to serving as an illustrative guide, the ERD contributes to discerning data redundancies and optimising the database structure. It assists in establishing the integrity constraints, such as primary and foreign keys, crucial for enhancing data consistency and preventing anomalies.
 
 From the standpoint of database implementation, the ERD's illustrative design is crucial for understanding how these relationships are crucial for the film recommendation application. These associations facilitate efficient data operations, such as retrieval, modification, and deletion, while ensuring data integrity.
 
-In essence, the ERD acts as a foundational blueprint for the film recommendation application. It presents a comprehensive view of the data organization, guiding the establishment of relationships between various entities, thereby contributing to the smooth functioning of the application.
+In essence, the ERD acts as a foundational blueprint for the film recommendation application. It presents a comprehensive view of the data organisation, guiding the establishment of relationships between various entities, thereby contributing to the smooth functioning of the application.
 
 ## **R7: Third Party Services**
 
-In modern software development, particularly in building web applications, leveraging third-party services or libraries is a crucial aspect that can dramatically speed up the development process and enhance the overall application performance and security. These services provide pre-implemented, tested, and optimized functionalities that developers can utilize, rather than reinventing the wheel. In the context of this Flask-based application, several such services play key roles in shaping the functionality and security profile of the application. From Flask, which provides the foundational web framework, to libraries such as SQLAlchemy for database interaction, Flask-Marshmallow for data serialization and validation, and Flask-Bcrypt for password security, each service contributes to a specific aspect of the application. 
+In modern software development, particularly in building web applications, leveraging third-party services or libraries is a crucial aspect that can dramatically speed up the development process and enhance the overall application performance and security. These services provide pre-implemented, tested, and optimised functionalities that developers can utilise, rather than reinventing the wheel. In the context of this Flask-based application, several such services play key roles in shaping the functionality and security profile of the application. From Flask, which provides the foundational web framework, to libraries such as SQLAlchemy for database interaction, Flask-Marshmallow for data serialisation and validation, and Flask-Bcrypt for password security, each service contributes to a specific aspect of the application. 
 
 ## Flask
 
@@ -439,11 +436,11 @@ At the heart of data persistence in the application lies SQLAlchemy. It is a SQL
 
 ## Flask-SQLAlchemy 
 
-Building on SQLAlchemy, Flask-SQLAlchemy is a Flask extension that simplifies the management of SQLAlchemy inside a Flask application. It helps handle connections to different database servers and provides a centralized way to create models that define the structure of the data that is to be stored in the database. It is also responsible for session management, an essential aspect of interacting with SQLAlchemy.
+Building on SQLAlchemy, Flask-SQLAlchemy is a Flask extension that simplifies the management of SQLAlchemy inside a Flask application. It helps handle connections to different database servers and provides a centralised way to create models that define the structure of the data that is to be stored in the database. It is also responsible for session management, an essential aspect of interacting with SQLAlchemy.
 
 ## Flask-Marshmallow 
 
-Flask-Marshmallow plays an essential role in data serialization and deserialization. It provides a simple way to control how objects are converted to or from complex data types, like JSON, which is an important part of handling HTTP requests and responses in the application. Marshmallow also provides validation for input data. This ensures that data being sent to the application adheres to predefined rules, thereby maintaining the integrity of the application.
+Flask-Marshmallow plays an essential role in data serialisation and deserialisation. It provides a simple way to control how objects are converted to or from complex data types, like JSON, which is an important part of handling HTTP requests and responses in the application. Marshmallow also provides validation for input data. This ensures that data being sent to the application adheres to predefined rules, thereby maintaining the integrity of the application.
 
 ## Flask-Bcrypt
 
@@ -451,7 +448,7 @@ Security is a primary concern in web applications, especially when handling sens
 
 ## Flask-JWT-Extended
 
-Authentication and authorization are other critical aspects of web application security. Flask-JWT-Extended provides support for JSON Web Tokens (JWT) in Flask. JWTs are a secure and efficient method of transferring data between two parties. In this application, JWTs are used to authenticate users and ensure that they are authorized to access certain routes in the application.
+Authentication and authorization are other critical aspects of web application security. Flask-JWT-Extended provides support for JSON Web Tokens (JWT) in Flask. JWTs are a secure and efficient method of transferring data between two parties. In this application, JWTs are used to authenticate users and ensure that they are authorised to access certain routes in the application.
 
 ## psycopg2
 
@@ -459,7 +456,7 @@ Exception handling is an important part of building robust applications. psycopg
 
 ## Python Decorators
 
-The Python built-in functools module is used in the application to create decorator functions. Decorators allow for augmenting and modifying the behavior of a function or class without permanently changing it. In this application, decorators are used to enforce access control rules. The admin_required decorator ensures that a route can only be accessed by an administrator, and the user_required decorator ensures that a user can only access data associated with their account.
+The Python built-in functools module is used in the application to create decorator functions. Decorators allow for augmenting and modifying the behaviour of a function or class without permanently changing it. In this application, decorators are used to enforce access control rules. The admin_required decorator ensures that a route can only be accessed by an administrator, and the user_required decorator ensures that a user can only access data associated with their account.
 
 ## Python datetime module
 
@@ -467,9 +464,9 @@ In any application that uses authentication, managing session lifetimes is cruci
 
 ## Marshmallow
 
-Marshmallow is used for object serialization/deserialization. It offers a simple way to control how objects are converted to or from complex data types. It's a crucial part of the application as it validates user input before it is processed or saved in the database.
+Marshmallow is used for object serialisation/deserialisation. It offers a simple way to control how objects are converted to or from complex data types. It's a crucial part of the application as it validates user input before it is processed or saved in the database.
 
-The third-party services used in the application work together to provide a robust, secure, and efficient framework for building a web application. Flask forms the foundation, while SQLAlchemy and Flask-SQLAlchemy manage the database interactions. Flask-Marshmallow and Marshmallow handle serialization, deserialization, and validation of data, while Flask-Bcrypt and Flask-JWT-Extended take care of the security aspects. psycopg2 aids in error handling, and Python's datetime and functools modules handle session management and access control, respectively. Together, these services are integral to the functionality of the application.
+The third-party services used in the application work together to provide a robust, secure, and efficient framework for building a web application. Flask forms the foundation, while SQLAlchemy and Flask-SQLAlchemy manage the database interactions. Flask-Marshmallow and Marshmallow handle serialisation, deserialisation, and validation of data, while Flask-Bcrypt and Flask-JWT-Extended take care of the security aspects. psycopg2 aids in error handling, and Python's datetime and functools modules handle session management and access control, respectively. Together, these services are integral to the functionality of the application.
 
 ## **R8: Project Models and their Relationships with each other**
 
@@ -547,7 +544,7 @@ class Genre(db.Model):
 
 The Genre model, the final addition, represents the different genres that a film can be classified under. It includes two attributes: genre_id and genre_name. The genre_id serves as the primary key, and the genre_name attribute, which is unique, stores the genre's name. The Genre model also has a 'film_genres' relationship with the FilmGenre model, resulting in a one-to-many relationship.
 
-Collectively, these models provide a clear, efficient, and consistent structure for the application's database, enhancing its usability and the overall user experience. They store critical information and establish relationships to ensure proper data organization and manipulation, serving as the backbone of the film recommendation application.
+Collectively, these models provide a clear, efficient, and consistent structure for the application's database, enhancing its usability and the overall user experience. They store critical information and establish relationships to ensure proper data organisation and manipulation, serving as the backbone of the film recommendation application.
 
 ## References
 
